@@ -824,6 +824,10 @@ var helmChartTemplateCases = []helmTemplateCase{
 `,
 	},
 	{
+		name:       "manage-default-gateway-class-disabled",
+		valuesYAML: "manageDefaultGatewayClass: false\n",
+	},
+	{
 		name: "waypoint-enabled",
 		valuesYAML: `waypoint:
   enabled: true

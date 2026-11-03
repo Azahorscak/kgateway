@@ -406,6 +406,11 @@ type Settings struct {
 	// E.g., {"gateway-class-name":{"name":"params-name","namespace":"params-namespace","group":"gateway.networking.k8s.io","kind":"GatewayParameters"}}
 	GatewayClassParametersRefs GatewayClassParametersRefs `split_words:"true" default:"{}"`
 
+	// ManageDefaultGatewayClass controls whether kgateway creates and keeps the default
+	// GatewayClass up to date. When false, kgateway does not create or update the default
+	// GatewayClass, but still reports status on it if one exists and references this controller.
+	ManageDefaultGatewayClass bool `split_words:"true" default:"true"`
+
 	// Enables setting the `dev.kgateway.auth_policy:auth_succeeded=true` dynamic metadata on successfully-authenticated routes.
 	EnableAuthMetadata bool `split_words:"true" default:"false"`
 

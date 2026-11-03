@@ -301,6 +301,11 @@ serviceEntriesExclusionLabelSelectors: []
 #        namespace: kgateway-system
 gatewayClassParametersRefs: {}
 
+# -- Whether kgateway creates and manages the default GatewayClass (`kgateway`).
+#    Set to false to manage the GatewayClass yourself (e.g. via GitOps). kgateway still
+#    reports status on the GatewayClass if it exists and references this controller.
+manageDefaultGatewayClass: true
+
 # -- Policy merging settings. Currently, TrafficPolicy's extAuth, extProc, and transformation policies support deep merging.
 # E.g., to enable deep merging of extProc policy in TrafficPolicy:
 # policyMerge:

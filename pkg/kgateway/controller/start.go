@@ -315,6 +315,7 @@ func GetDefaultClassInfo(
 		Annotations:       map[string]string{},
 		ControllerName:    controllerName,
 		SupportedFeatures: deployer.GetSupportedFeaturesForStandardGateway(globalSettings.EnableExperimentalGatewayAPIFeatures),
+		Unmanaged:         !globalSettings.ManageDefaultGatewayClass,
 	}
 	applyGatewayClassParametersRef(classInfos[gatewayClassName], gatewayClassName, refOverrides)
 	maps.Copy(classInfos, additionalClassInfos)
