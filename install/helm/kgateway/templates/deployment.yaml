@@ -204,6 +204,10 @@ spec:
             {{- end }}
             - name: KGW_GATEWAY_CLASS_PARAMETERS_REFS
               value: {{ .Values.gatewayClassParametersRefs | toJson | quote }}
+            {{- if and (not .Values.manageDefaultGatewayClass) (not (and .Values.controller.extraEnv (hasKey .Values.controller.extraEnv "KGW_MANAGE_DEFAULT_GATEWAY_CLASS"))) }}
+            - name: KGW_MANAGE_DEFAULT_GATEWAY_CLASS
+              value: "false"
+            {{- end }}
             {{- if and .Values.waypoint.enabled (not (and .Values.controller.extraEnv (hasKey .Values.controller.extraEnv "KGW_INGRESS_USE_WAYPOINTS"))) }}
             - name: KGW_INGRESS_USE_WAYPOINTS
               value: "true"

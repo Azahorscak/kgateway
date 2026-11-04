@@ -169,6 +169,11 @@ func (r *gatewayClassReconciler) reconcileGatewayClasses() error {
 }
 
 func (r *gatewayClassReconciler) reconcileGatewayClass(name string, info *deployer.GatewayClassInfo) error {
+	if info.Unmanaged {
+		logger.Debug("skipping apply of unmanaged GatewayClass", "name", name)
+		return nil
+	}
+
 	// Build desired GatewayClass with only fields we want to manage via SSA
 	desired := r.buildDesiredGatewayClass(name, info)
 

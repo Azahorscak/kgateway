@@ -24,6 +24,9 @@ type GatewayClassInfo struct {
 	// SupportedFeatures is the list of Gateway API features supported by this GatewayClass.
 	// This will be populated in the GatewayClass status.supportedFeatures field.
 	SupportedFeatures []gwv1.SupportedFeature
+	// Unmanaged, when true, prevents the controller from creating or updating this
+	// GatewayClass. Status is still reported if the GatewayClass exists.
+	Unmanaged bool
 }
 
 // GetSupportedFeaturesForStandardGateway returns the supported features for the standard Gateway class.
